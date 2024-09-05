@@ -1,9 +1,22 @@
 <script>
-export default {}
+import introGallery from '@/components/introGallery.vue'
+export default {
+  components: { introGallery }
+}
 </script>
 
 <template>
-  <h1 class="container">Home view!</h1>
+  <intro-gallery />
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less">
+html {
+  background: @ui-black;
+}
+body {
+  padding: 40px 20px;
+  @media screen and (min-width: @brakepoint-m) {
+    padding: 186px 0;
+  }
+}
+</style>
