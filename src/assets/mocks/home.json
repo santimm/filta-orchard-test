@@ -4,21 +4,21 @@
     "intro_gallery": {
       "id": 1,
       "title": "ANSWER YOUR BODY’S NEEDS",
-      "description": "The way ingredients are sourced affects the way we nourish our bodies. Author Mark says we should be aware that artificial flavours need to be healthy, but that artificial flavouring it are an appetite for the foods and nutrients needs getting in the way. This can be reversed by focusing on high-quality ingredients and being mindful as your appetite guides you to consume according to your body’s needs.",
+      "description": "The way ingredients are sourced affects the way we nourish our bodies. Author Mark Schatzer believes our body naturally devolops an appetite for the foods and nutrients it needs to be healthy, but that artificial flavourings are getting in the way. This can be reversed by focusing on high-quality ingredients and being mindful as your appetite guides you to consume according to your body’s needs.",
       "highlight": "BE MINDFUL",
-      "highlight_description": "Sourcing local or more mindful is a good start being more mindful about what you are cooking and eating.",
+      "highlight_description": "Sourcing local or organic food is a good way to start being more mindful about what you're cooking and eating.",
       "gallery": [
         {
           "id": "1",
-          "image_url": "./assets/images/intro-gallery/Image-01.jpg"
+          "image_url": "/images/intro-gallery/Image-01.jpg"
         },
         {
           "id": "2",
-          "image_url": "./assets/images/intro-gallery/Image-02.jpg"
+          "image_url": "/images/intro-gallery/Image-02.jpg"
         },
         {
           "id": "3",
-          "image_url": "./assets/images/intro-gallery/Image-03.jpg"
+          "image_url": "/images/intro-gallery/Image-03.jpg"
         }
       ]
     },
@@ -32,7 +32,7 @@
           "description": "AEG ambassador Mark Best’s summer eats are guaranteed to help you make the most of the warmer weather and entertaining at home.",
           "link": "*",
           "link_text": "Read more",
-          "image_url": "./assets/images/articles-cards/Image-01.jpg"
+          "image_url": "/images/articles-cards/Image-01.jpg"
         },
         {
           "id": "2",
@@ -40,7 +40,7 @@
           "description": "One of Australia’s best chefs and AEG ambassador, Mark Best, shares his favourite Christmas Eve menu which is sure to impress your guests.",
           "link": "*",
           "link_text": "Read more",
-          "image_url": "./assets/images/articles-cards/Image-02.jpg"
+          "image_url": "/images/articles-cards/Image-02.jpg"
         },
         {
           "id": "3",
@@ -48,7 +48,7 @@
           "description": "This exclusive cookbook gives you all the know-how you need. We’ve designed it to make sure you get the most out of our products - and the best out of your food.",
           "link": "*",
           "link_text": "Read more",
-          "image_url": "./assets/images/articles-cards/Image-03.jpg"
+          "image_url": "/images/articles-cards/Image-03.jpg"
         }
       ]
     }
