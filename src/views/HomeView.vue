@@ -1,12 +1,14 @@
 <script>
+import ArticlesCards from '@/components/articlesCards.vue'
 import introGallery from '@/components/introGallery.vue'
 export default {
-  components: { introGallery }
+  components: { introGallery, ArticlesCards }
 }
 </script>
 
 <template>
   <intro-gallery />
+  <articles-cards />
 </template>
 
 <style lang="less">
