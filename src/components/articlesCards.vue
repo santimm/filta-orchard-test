@@ -6,6 +6,17 @@ export default {
     return {
       content: homeData.data.articles_cards
     }
+  },
+  methods: {
+    anchorLog(id, name) {
+      console.log(
+        '%cid: %c' + id + '\n' + '%cname: %c' + name,
+        'color:aqua',
+        'color:greenyellow',
+        'color:aqua',
+        'color:greenyellow'
+      )
+    }
   }
 }
 </script>
@@ -20,9 +31,13 @@ export default {
         </picture>
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
-        <router-link class="link" :to="item.link" :data-name="item.link_text">{{
-          item.link_text
-        }}</router-link>
+        <router-link
+          class="link"
+          v-on:click="anchorLog(item.id, item.title)"
+          :to="item.link"
+          :data-name="item.link_text"
+          >{{ item.link_text }}</router-link
+        >
       </div>
     </div>
   </section>
