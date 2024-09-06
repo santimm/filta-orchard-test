@@ -1,10 +1,23 @@
 <script>
 import homeData from '@/assets/mocks/home.json'
+import imageModal from '@/components/imageModal.vue'
 
 export default {
+  components: {
+    imageModal
+  },
   data: () => {
     return {
-      content: homeData.data.intro_gallery
+      content: homeData.data.intro_gallery,
+      selectedImage: null
+    }
+  },
+  methods: {
+    showModal(image) {
+      this.selectedImage = image
+    },
+    closeModal() {
+      this.selectedImage = null
     }
   }
 }
@@ -23,9 +36,16 @@ export default {
     </div>
 
     <div class="intro--gallerybox">
-      <img v-for="(item, e) in content.gallery" :key="e" :src="item.image_url" alt="" />
+      <img
+        v-for="(item, e) in content.gallery"
+        :key="e"
+        :src="item.image_url"
+        v-on:click="showModal(item)"
+        alt=""
+      />
     </div>
   </section>
+  <imageModal v-if="selectedImage" :item="selectedImage" v-on:click="closeModal" />
 </template>
 
 <style lang="less" scoped>
