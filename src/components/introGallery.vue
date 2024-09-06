@@ -44,18 +44,27 @@ export default {
       padding-bottom: 18px;
       margin-bottom: 26px;
       border-bottom: 1px solid @ui-white;
+
+      opacity: 0;
+      animation: opacity 2s ease-in-out forwards;
     }
     p {
       font-family: @light;
       font-size: small;
       text-align: center;
       color: @ui-grey;
+
+      opacity: 0;
+      animation: opacity 2s 1s ease-in-out forwards;
     }
   }
   &--highlight {
     grid-row: 3;
-
     margin-bottom: 20px;
+
+    opacity: 0;
+    animation: opacity 2s 5s ease-in-out forwards;
+
     strong {
       display: block;
       margin-bottom: 14px;
@@ -75,6 +84,11 @@ export default {
     gap: 20px;
     img {
       width: 100%;
+
+      opacity: 0;
+      animation:
+        slideIn 4s 2s cubic-bezier(0.5, 0, 0, 1),
+        opacity 5s 2.5s linear forwards;
     }
   }
 }
@@ -128,6 +142,25 @@ export default {
       gap: 20px 24px;
       padding: 0;
     }
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }
 </style>

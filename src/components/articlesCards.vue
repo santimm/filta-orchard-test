@@ -4,7 +4,8 @@ import homeData from '@/assets/mocks/home.json'
 export default {
   data: () => {
     return {
-      content: homeData.data.articles_cards
+      content: homeData.data.articles_cards,
+      isHovered: null
     }
   },
   methods: {
@@ -25,15 +26,22 @@ export default {
   <section class="articles l-container">
     <h2 class="articles--title">{{ content.title }}</h2>
     <div class="articles--cardbox">
-      <div class="item" v-for="(item, e) in content.articles" :key="e">
+      <div
+        v-for="(item, e) in content.articles"
+        :key="e"
+        class="item"
+        :class="{ hovered: isHovered === e }"
+      >
         <picture class="image-box">
           <img :src="item.image_url" alt="" />
         </picture>
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+        <h3 class="title">{{ item.title }}</h3>
+        <p class="description">{{ item.description }}</p>
         <router-link
           class="link"
           v-on:click="anchorLog(item.id, item.title)"
+          @mouseenter="isHovered = e"
+          @mouseleave="isHovered = null"
           :to="item.link"
           :data-name="item.link_text"
           >{{ item.link_text }}</router-link
@@ -46,6 +54,9 @@ export default {
 <style lang="less" scoped>
 .articles {
   margin-top: 120px;
+
+  opacity: 0;
+  animation: opacity 1.6s 7s ease-in-out forwards;
 
   &--title {
     font-family: @light;
@@ -62,6 +73,15 @@ export default {
 
     .item {
       max-width: 286px;
+      transition:
+        transform 0.3s cubic-bezier(0.5, 0, 0, 1),
+        box-shadow 0.25s cubic-bezier(0.5, 0, 0, 1);
+      &.hovered {
+        box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.14);
+        transform: matrix(1.01, 0, 0, 1.01, 1, 1);
+        background: @ui-black-light;
+        outline: 10px solid @ui-black-light;
+      }
 
       .image-box {
         display: inline-flex;
@@ -81,14 +101,13 @@ export default {
           width: 100%;
         }
       }
-
-      h3 {
+      .title {
         margin-bottom: 12px;
 
         font-family: @regular;
         font-size: medium;
       }
-      p {
+      .description {
         margin-bottom: 28px;
 
         font-family: @light;
@@ -110,7 +129,7 @@ export default {
 
         &:hover {
           color: @ui-grey;
-          border-bottom-color: fade(@ui-red, 60%);
+          border-bottom-color: fade(@ui-green, 60%);
         }
       }
     }
@@ -149,12 +168,12 @@ export default {
       .item {
         max-width: 384px;
 
-        h3 {
+        .title {
           font-family: @semi-bold;
           font-size: 1.13rem;
           margin-bottom: 8px;
         }
-        p {
+        .description {
           font-size: medium;
           line-height: 1.76;
           margin-bottom: 32px;
@@ -165,6 +184,17 @@ export default {
         }
       }
     }
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
   }
 }
 </style>
