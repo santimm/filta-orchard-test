@@ -33,10 +33,12 @@ export default {
   bottom: 0;
   margin: auto;
   z-index: 2;
+  overflow: hidden;
 
   background-color: @ui-black-light;
-  border-bottom: 4px solid #c80028;
+  border-bottom: 4px solid @ui-red;
   border-radius: 12px;
+  border-top-right-radius: 0;
 
   opacity: 0;
   animation: opacity 0.3s ease-in-out forwards;
@@ -53,8 +55,13 @@ export default {
   }
 
   &--image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    max-height: 600px;
     z-index: 1;
-    margin: auto;
   }
 
   &--btn {
@@ -92,6 +99,13 @@ export default {
       &::after {
         background-color: fade(@ui-white, 90%);
       }
+    }
+  }
+}
+@media screen and (min-width: @brakepoint-s) {
+  .modal {
+    &--image {
+      height: 46vw;
     }
   }
 }
