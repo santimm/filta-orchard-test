@@ -1,6 +1,8 @@
 <script>
 import homeData from '@/assets/mocks/home.json'
 import imageModal from '@/components/imageModal.vue'
+/* Composables */
+import { useContentApi } from '@/composable/useContentApi'
 
 export default {
   components: {
@@ -19,6 +21,11 @@ export default {
     closeModal() {
       this.selectedImage = null
     }
+  },
+  async created() {
+    const { fetchSingle } = useContentApi()
+    const data = await fetchSingle('home', '[intro_gallery][populate]=gallery')
+    this.content = data.data.intro_gallery
   }
 }
 </script>

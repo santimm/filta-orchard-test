@@ -1,5 +1,7 @@
 <script>
 import homeData from '@/assets/mocks/home.json'
+/* Composables */
+import { useContentApi } from '@/composable/useContentApi'
 
 export default {
   data: () => {
@@ -18,6 +20,12 @@ export default {
         'color:greenyellow'
       )
     }
+  },
+  async created() {
+    const { fetchSingle } = useContentApi()
+    const data = await fetchSingle('home', '[articles_cards][populate][cards][populate]=image')
+    this.content = data.data.articles_cards
+    console.log(this.content)
   }
 }
 </script>
@@ -27,7 +35,7 @@ export default {
     <h2 class="articles--title">{{ content.title }}</h2>
     <div class="articles--cardbox">
       <div
-        v-for="(item, e) in content.articles"
+        v-for="(item, e) in content.cards"
         :key="e"
         class="item"
         :class="{ hovered: isHovered === e }"
@@ -42,7 +50,7 @@ export default {
           v-on:click="anchorLog(item.id, item.title)"
           @mouseenter="isHovered = e"
           @mouseleave="isHovered = null"
-          :to="item.link"
+          :to="'/'"
           :data-name="item.link_text"
           >{{ item.link_text }}</router-link
         >
