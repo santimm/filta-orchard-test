@@ -3,6 +3,8 @@ import homeData from '@/assets/mocks/home.json'
 import imageModal from '@/components/imageModal.vue'
 /* Composables */
 import { useContentApi } from '@/composable/useContentApi'
+/* utils */
+import { getImageUrl } from '@/utils/imageUrl'
 
 export default {
   components: {
@@ -15,6 +17,8 @@ export default {
     }
   },
   methods: {
+    getImageUrl,
+
     showModal(image) {
       this.selectedImage = image
     },
@@ -46,9 +50,9 @@ export default {
       <img
         v-for="(item, e) in content.gallery"
         :key="e"
-        :src="item.image_url"
+        :src="getImageUrl(item.url)"
         v-on:click="showModal(item)"
-        alt=""
+        :alt="item.alternativeText"
       />
     </div>
   </section>

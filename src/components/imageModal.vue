@@ -1,8 +1,13 @@
 <script>
+/* utils */
+import { getImageUrl } from '@/utils/imageUrl'
+
 export default {
   name: 'imageModal',
   props: ['item'],
   methods: {
+    getImageUrl,
+
     close() {
       this.$emit('close')
     }
@@ -12,7 +17,7 @@ export default {
 
 <template>
   <div class="modal .l-center-box" v-on:click="close">
-    <img class="modal--image" :src="item.image_url" :alt="item.id" />
+    <img class="modal--image" :src="getImageUrl(item.url)" :alt="item.alternativeText" />
     <span>my modal test</span>
     <button class="modal--btn" v-on:click="close"></button>
   </div>

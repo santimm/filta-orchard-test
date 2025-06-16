@@ -2,6 +2,8 @@
 import homeData from '@/assets/mocks/home.json'
 /* Composables */
 import { useContentApi } from '@/composable/useContentApi'
+/* utils */
+import { getImageUrl } from '@/utils/imageUrl'
 
 export default {
   data: () => {
@@ -11,6 +13,8 @@ export default {
     }
   },
   methods: {
+    getImageUrl,
+
     anchorLog(id, name) {
       console.log(
         '%cid: %c' + id + '\n' + '%cname: %c' + name,
@@ -25,7 +29,6 @@ export default {
     const { fetchSingle } = useContentApi()
     const data = await fetchSingle('home', '[articles_cards][populate][cards][populate]=image')
     this.content = data.data.articles_cards
-    console.log(this.content)
   }
 }
 </script>
@@ -41,7 +44,7 @@ export default {
         :class="{ hovered: isHovered === e }"
       >
         <picture class="image-box">
-          <img :src="item.image_url" alt="" />
+          <img :src="getImageUrl(item.image.url)" :alt="item.image.alternativeText" />
         </picture>
         <h3 class="title">{{ item.title }}</h3>
         <p class="description">{{ item.description }}</p>
