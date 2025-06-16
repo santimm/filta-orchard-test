@@ -20,11 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set environment variables
-        run: |
-          echo "VITE_STRAPI_API_URL=${{ secrets.VITE_STRAPI_API_URL }}" >> .env
-
-      - name: Build project
+      - name: Build project with environment variables
+        env:
+          VITE_STRAPI_API_URL: ${{ secrets.VITE_STRAPI_API_URL }}
         run: npm run build
 
       - name: Deploy to GitHub Pages
